@@ -1,0 +1,13 @@
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchBot.exe.config
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchBot.exe
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchBot.pdb
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csprojResolveAssemblyReference.cache
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.exe
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.pdb
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\Newtonsoft.Json.dll
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchLib.dll
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\websocket-sharp.dll
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\Newtonsoft.Json.xml
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchLib.xml
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.TwitchInfo.resources
+d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csproj.GenerateResource.Cache
