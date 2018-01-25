@@ -31,8 +31,8 @@ namespace TwitchBot
 
             client = new TwitchClient(credential, TwitchInfo.ChannelName, logging: false);
 
-            client.ChatThrottler = new TwitchLib.Services.MessageThrottler(10, TimeSpan.FromSeconds(30));
-            client.WhisperThrottler = new TwitchLib.Services.MessageThrottler(10, TimeSpan.FromSeconds(30)); 
+            client.ChatThrottler = new TwitchLib.Services.MessageThrottler(client, 10, TimeSpan.FromSeconds(30)); //new TwitchLib.Services.MessageThrottler(10, TimeSpan.FromSeconds(30));
+            client.WhisperThrottler = new TwitchLib.Services.MessageThrottler(client, 10, TimeSpan.FromSeconds(30));
             client.OnLog += Client_OnLog;
 
             client.OnConnectionError += Client_OnConnectionError;
@@ -50,7 +50,7 @@ namespace TwitchBot
             //{
                 synth.Volume = 100;
                 synth.SetOutputToDefaultAudioDevice();
-                synth.Speak($"{e.ChatMessage.DisplayName} Disse: {e.ChatMessage.Message.Substring(6)}");
+                synth.Speak($"{e.ChatMessage.DisplayName} Disse: {e.ChatMessage.Message}");
             //}
 
             

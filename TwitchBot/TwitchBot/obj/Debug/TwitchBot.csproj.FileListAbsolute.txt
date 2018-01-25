@@ -11,3 +11,22 @@ d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Deb
 d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\bin\Debug\TwitchLib.xml
 d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.TwitchInfo.resources
 d:\users\andre\documents\visual studio 2017\Projects\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csproj.GenerateResource.Cache
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchBot.exe.config
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchBot.exe
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchBot.pdb
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchLib.dll
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\websocket-sharp.dll
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csprojResolveAssemblyReference.cache
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.TwitchInfo.resources
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csproj.GenerateResource.Cache
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.exe
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.pdb
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csproj.CoreCompileInputs.cache
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchBot.exe.manifest
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\TwitchBot.application
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.exe.manifest
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.application
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\SuperSocket.ClientEngine.dll
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\bin\Debug\WebSocket4Net.dll
