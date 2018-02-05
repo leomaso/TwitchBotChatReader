@@ -10,7 +10,28 @@ namespace TwitchBot
 
             bot.Connect();
 
-            Console.ReadLine();
+            do
+            {
+                String input = Console.ReadLine().ToLower();
+
+                String argument = input.Substring(input.IndexOf(' ')+1);
+
+                String command = input.Substring(0, input.IndexOf(' '));
+
+                switch (command)
+                {
+                    case "volume":
+                        bot.setVolume(Int32.Parse(argument));
+                        break;
+                    case "rate":
+                        bot.setRate(Int32.Parse(argument));
+                        break;
+                    default:
+                        break;
+                }
+
+
+            } while (true);
         }
     }
 }
