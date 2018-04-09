@@ -95,5 +95,14 @@ namespace TwitchBot {
                 return ResourceManager.GetString("ClientID", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to oauth:rhodmlr6ef607io4zqyn22udmxo6hx.
+        /// </summary>
+        internal static string OAuth {
+            get {
+                return ResourceManager.GetString("OAuth", resourceCulture);
+            }
+        }
     }
 }
