@@ -104,6 +104,8 @@ namespace TwitchBot
 
             String msg = e.ChatMessage.Message.ToLower();
 
+            
+
             if (!msg.StartsWith("!voice "))
             {
                 synth.Volume = volume;
@@ -111,10 +113,14 @@ namespace TwitchBot
 
                 synth.SetOutputToDefaultAudioDevice();
 
-                msg = msg.Replace("andrxd", "andré");
-
-                synth.Speak($"{e.ChatMessage.DisplayName} Disse: {msg}");               
-
+                if (e.ChatMessage.DisplayName == "andrxd")
+                {
+                    synth.Speak($"André Disse: {msg}");
+                }
+                else
+                {
+                    synth.Speak($"{e.ChatMessage.DisplayName} Disse: {msg}");
+                }                
             }           
 
         }
