@@ -9,7 +9,7 @@ namespace TwitchBot
             TwitchChatBot bot = new TwitchChatBot();
 
             bot.Connect();
-
+            
             do
             {
                 String input = Console.ReadLine().ToLower();

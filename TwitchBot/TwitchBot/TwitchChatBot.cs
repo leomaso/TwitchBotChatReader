@@ -11,14 +11,20 @@ using TwitchLib.Api;
 using TwitchLib.Api.Services;
 using TwitchLib.Api.Services.Events.FollowerService;
 
+using System.IO;
+using Newtonsoft.Json;
+
 namespace TwitchBot
 {
     internal class TwitchChatBot
     {
+        
+
         TwitchClient client;
         TwitchAPI twitchAPI;
         SpeechSynthesizer synth = new SpeechSynthesizer();
-        
+        Config config;
+
         int volume = 100;
         int rate = -3;
 
@@ -32,13 +38,20 @@ namespace TwitchBot
             rate = value;
         }
         
-        readonly ConnectionCredentials credential = new ConnectionCredentials(TwitchInfo.BotUserName,TwitchInfo.BotToken);
+        
         
         public TwitchChatBot()
-        {   
-
+        {
+            
         }
-
+        public void LoadConfig()
+        {
+            using (StreamReader r = new StreamReader("default.json"))
+            {
+                string json = r.ReadToEnd();
+                config = JsonConvert.DeserializeObject<Config>(json);
+            }
+        }
         internal void Disconnect()
         {
             Console.WriteLine("Disconnecting");
@@ -48,15 +61,21 @@ namespace TwitchBot
         {
 
 
+
+            LoadConfig();
+
+            ConnectionCredentials credential = new ConnectionCredentials(config.BotUserName, config.BotToken);
+
+
+
             client = new TwitchClient();
             twitchAPI = new TwitchAPI();
 
             FollowerService followerService = new FollowerService(twitchAPI, 1, 25);
             
-            client.Initialize(credential, TwitchInfo.ChannelName);
+            client.Initialize(credential, config.ChannelName);
 
-            synth.SelectVoice("VE_Brazilian_Portuguese_Fernanda_22kHz");
-            
+            synth.SelectVoice("VE_Brazilian_Portuguese_Fernanda_22kHz");            
 
             Console.WriteLine("Connecting");
             
@@ -105,7 +124,6 @@ namespace TwitchBot
             String msg = e.ChatMessage.Message.ToLower();
 
             
-
             if (!msg.StartsWith("!voice "))
             {
                 synth.Volume = volume;
