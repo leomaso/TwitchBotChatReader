@@ -13,12 +13,13 @@ using TwitchLib.Api.Services.Events.FollowerService;
 
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace TwitchBot
 {
     internal class TwitchChatBot
     {
-        
+
 
         TwitchClient client;
         TwitchAPI twitchAPI;
@@ -28,7 +29,7 @@ namespace TwitchBot
         int volume = 100;
         int rate = -3;
 
-        public void setVolume (int value)
+        public void setVolume(int value)
         {
             volume = value;
         }
@@ -37,12 +38,12 @@ namespace TwitchBot
         {
             rate = value;
         }
-        
-        
-        
+
+
+
         public TwitchChatBot()
         {
-            
+
         }
         public void LoadConfig()
         {
@@ -56,7 +57,7 @@ namespace TwitchBot
         {
             Console.WriteLine("Disconnecting");
         }
-        
+
         internal void Connect()
         {
 
@@ -64,7 +65,34 @@ namespace TwitchBot
 
             LoadConfig();
 
+            string selectedVoice;
+            int count = 0;
             ConnectionCredentials credential = new ConnectionCredentials(config.BotUserName, config.BotToken);
+            Console.WriteLine("Choose one voice: ");
+
+            if (config.Voice == "")
+            {
+                foreach (InstalledVoice voice in synth.GetInstalledVoices())
+                {
+
+                    Console.WriteLine("[" + count + "] - " + voice.VoiceInfo.Name);
+                    count++;
+                }
+
+                count = Convert.ToInt32(Console.ReadLine());
+                config.Voice = synth.GetInstalledVoices()[count].VoiceInfo.Name;
+                
+                
+
+                using (StreamWriter file = File.CreateText(@"default.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    //serialize object directly into file stream
+                    serializer.Serialize(file, config);
+                }
+
+                
+            }
 
 
 
@@ -72,15 +100,15 @@ namespace TwitchBot
             twitchAPI = new TwitchAPI();
 
             FollowerService followerService = new FollowerService(twitchAPI, 1, 25);
-            
+
             client.Initialize(credential, config.ChannelName);
 
-            synth.SelectVoice("VE_Brazilian_Portuguese_Fernanda_22kHz");            
+            synth.SelectVoice(config.Voice);
 
             Console.WriteLine("Connecting");
-            
-            
-            client.ChatThrottler = new MessageThrottler(client, 10, TimeSpan.FromSeconds(30)); 
+
+
+            client.ChatThrottler = new MessageThrottler(client, 10, TimeSpan.FromSeconds(30));
             client.WhisperThrottler = new MessageThrottler(client, 10, TimeSpan.FromSeconds(30));
 
             followerService.OnNewFollowersDetected += Follow_OnNewFollowerDetected;
@@ -90,7 +118,7 @@ namespace TwitchBot
             client.OnMessageReceived += Client_OnMessageReceived;
             client.OnUserJoined += Client_OnUserJoined;
             client.OnBeingHosted += Client_OnBeingHosted;
-            
+
             client.Connect();
 
             Console.WriteLine("Success");
@@ -105,17 +133,17 @@ namespace TwitchBot
             {
                 synth.Speak("obrigado pelo fólou " + item.User.Name);
             }
-            
+
         }
 
         private void Client_OnBeingHosted(object sender, OnBeingHostedArgs e)
         {
-            synth.Speak("Obrigado pelo host "+e.BeingHostedNotification.HostedByChannel.ToString() + " Jesus te ama");
+            synth.Speak("Obrigado pelo host " + e.BeingHostedNotification.HostedByChannel.ToString() + " Jesus te ama");
         }
 
         private void Client_OnUserJoined(object sender, OnUserJoinedArgs e)
         {
-            Console.WriteLine("Usuario: {0} entrou as {1}", e.Username, DateTime.Now.ToString());            
+            Console.WriteLine("Usuario: {0} entrou as {1}", e.Username, DateTime.Now.ToString());
         }
 
         private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
@@ -123,7 +151,7 @@ namespace TwitchBot
 
             String msg = e.ChatMessage.Message.ToLower();
 
-            
+
             if (!msg.StartsWith("!voice "))
             {
                 synth.Volume = volume;
@@ -138,8 +166,8 @@ namespace TwitchBot
                 else
                 {
                     synth.Speak($"{e.ChatMessage.DisplayName} Disse: {msg}");
-                }                
-            }           
+                }
+            }
 
         }
 

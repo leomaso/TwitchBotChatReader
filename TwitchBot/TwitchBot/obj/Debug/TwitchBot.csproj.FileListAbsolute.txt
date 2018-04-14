@@ -47,3 +47,4 @@ C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\Twitc
 C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.application
 C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.exe
 C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.pdb
+C:\Users\Andre\Source\Repos\TwitchChatReader\TwitchBot\TwitchBot\obj\Debug\TwitchBot.csprojResolveAssemblyReference.cache

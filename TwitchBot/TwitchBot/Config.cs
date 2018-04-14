@@ -15,7 +15,8 @@ namespace TwitchBot
         public string ChannelName { get; set; }
         public string ClientID { get; set; }
         public string OAuth { get; set; }
-
+        public string Voice { get; set; }
+        
     }
 
 }
