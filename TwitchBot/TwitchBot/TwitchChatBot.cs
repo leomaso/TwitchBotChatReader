@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Speech.Synthesis;
-using TwitchLib;
 using TwitchLib.Client.Models;
 using TwitchLib.Client.Events;
-using TwitchLib.Client.Extensions;
 using TwitchLib.Client.Services;
 using TwitchLib.Client;
-using TwitchLib.Client.Events.Services;
 using TwitchLib.Api;
 using TwitchLib.Api.Services;
 using TwitchLib.Api.Services.Events.FollowerService;
-
 using System.IO;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+
 
 namespace TwitchBot
 {
@@ -140,11 +136,20 @@ namespace TwitchBot
 
         public void LoadConfig()
         {
-            using (StreamReader r = new StreamReader("default.json"))
+            if (File.Exists(@"default.json"))
             {
-                string json = r.ReadToEnd();
-                config = JsonConvert.DeserializeObject<Config>(json);
+                using (StreamReader r = new StreamReader("default.json"))
+                {
+                    string json = r.ReadToEnd();
+                    config = JsonConvert.DeserializeObject<Config>(json);
+                }
             }
+            else
+            {                
+                StreamWriter file = File.CreateText(@"default.json");
+                
+            }
+            
         }
 
         internal SpeechSynthesizer createSynth()

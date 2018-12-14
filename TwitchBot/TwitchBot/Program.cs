@@ -7,8 +7,16 @@ namespace TwitchBot
         static void Main(string[] args)
         {
             TwitchChatBot bot = new TwitchChatBot();
+            try
+            {
+                bot.Connect();
+            }
+            catch (Exception ex)
+            {
 
-            bot.Connect();
+                Console.WriteLine(ex.Message);
+            }
+            
             
             do
             {
