@@ -1,7 +1,7 @@
 # TwitchBotChatReader
-## This is a twich chat bot that can read through voice the chat to you
+### This is a twich chat bot that can read through voice the chat to you
 
-### How to use 
+## How to use 
 #### 1 - Get a token for your bot account on https://twitchtokengenerator.com you just need chat_login permission
 #### 2 - Register an application and get an ClientID on https://dev.twitch.tv/ 
 #### 3 - Fill the dafault.json file with the information your token, bot user name, your channel and your cliente ID.
