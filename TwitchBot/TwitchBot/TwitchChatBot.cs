@@ -20,7 +20,6 @@ namespace TwitchBot
     internal class TwitchChatBot
     {
 
-
         TwitchClient client;
         TwitchAPI twitchAPI;
         SpeechSynthesizer synth = new SpeechSynthesizer();
@@ -39,62 +38,22 @@ namespace TwitchBot
             rate = value;
         }
 
-
-
         public TwitchChatBot()
         {
 
         }
-        public void LoadConfig()
-        {
-            using (StreamReader r = new StreamReader("default.json"))
-            {
-                string json = r.ReadToEnd();
-                config = JsonConvert.DeserializeObject<Config>(json);
-            }
-        }
+        
         internal void Disconnect()
         {
             Console.WriteLine("Disconnecting");
-        }
+        }        
 
         internal void Connect()
         {
 
-
-
             LoadConfig();
-
-            string selectedVoice;
-            int count = 0;
             ConnectionCredentials credential = new ConnectionCredentials(config.BotUserName, config.BotToken);
-            Console.WriteLine("Choose one voice: ");
-
-            if (config.Voice == "")
-            {
-                foreach (InstalledVoice voice in synth.GetInstalledVoices())
-                {
-
-                    Console.WriteLine("[" + count + "] - " + voice.VoiceInfo.Name);
-                    count++;
-                }
-
-                count = Convert.ToInt32(Console.ReadLine());
-                config.Voice = synth.GetInstalledVoices()[count].VoiceInfo.Name;
-                
-                
-
-                using (StreamWriter file = File.CreateText(@"default.json"))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    //serialize object directly into file stream
-                    serializer.Serialize(file, config);
-                }
-
-                
-            }
-
-
+            createSynth();
 
             client = new TwitchClient();
             twitchAPI = new TwitchAPI();
@@ -103,11 +62,8 @@ namespace TwitchBot
 
             client.Initialize(credential, config.ChannelName);
 
-            synth.SelectVoice(config.Voice);
-
             Console.WriteLine("Connecting");
-
-
+            
             client.ChatThrottler = new MessageThrottler(client, 10, TimeSpan.FromSeconds(30));
             client.WhisperThrottler = new MessageThrottler(client, 10, TimeSpan.FromSeconds(30));
 
@@ -150,7 +106,7 @@ namespace TwitchBot
         {
 
             String msg = e.ChatMessage.Message.ToLower();
-
+            SpeechSynthesizer synth = createSynth();
 
             if (!msg.StartsWith("!voice "))
             {
@@ -167,6 +123,7 @@ namespace TwitchBot
                 {
                     synth.Speak($"{e.ChatMessage.DisplayName} Disse: {msg}");
                 }
+                synth.Dispose();
             }
 
         }
@@ -179,6 +136,48 @@ namespace TwitchBot
         private void Client_OnLog(object sender, OnLogArgs e)
         {
             Console.WriteLine(e.Data);
+        }
+
+        public void LoadConfig()
+        {
+            using (StreamReader r = new StreamReader("default.json"))
+            {
+                string json = r.ReadToEnd();
+                config = JsonConvert.DeserializeObject<Config>(json);
+            }
+        }
+
+        internal SpeechSynthesizer createSynth()
+        {
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            LoadConfig();            
+            int count = 0;
+            if (config.Voice == "")
+            {
+                Console.WriteLine("Choose one voice: ");
+
+                foreach (InstalledVoice voice in synth.GetInstalledVoices())
+                {
+                    Console.WriteLine("[" + count + "] - " + voice.VoiceInfo.Name);
+                    count++;
+                }
+
+                count = Convert.ToInt32(Console.ReadLine());
+
+                config.Voice = synth.GetInstalledVoices()[count].VoiceInfo.Name;
+
+                using (StreamWriter file = File.CreateText(@"default.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    //serialize object directly into file stream
+                    serializer.Serialize(file, config);
+                }
+
+            }
+
+            synth.SelectVoice(config.Voice);
+            return synth;
         }
     }
 }
