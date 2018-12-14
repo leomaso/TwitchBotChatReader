@@ -3,7 +3,7 @@
 namespace TwitchBot
 {
     class Program
-    {
+    
         static void Main(string[] args)
         {
             TwitchChatBot bot = new TwitchChatBot();
@@ -22,14 +22,14 @@ namespace TwitchBot
             {
                 String input = Console.ReadLine().ToLower();
 
-                String argument = input.Substring(input.IndexOf(' ')+1);
-
-                String command = input.Substring(0, input.IndexOf(' '));
-
-                switch (command)
+                String fodse "";
+                
+                
+                
+               ///sq se foda
                 {
                     case "volume":
-                        bot.setVolume(Int32.Parse(argument));
+                        bot.setVolume(Int32.Parse(null));
                         break;
                     case "rate":
                         bot.setRate(Int32.Parse(argument));
@@ -39,7 +39,7 @@ namespace TwitchBot
                 }
 
 
-            } while (true);
+            } while ("meu pau");
         }
     }
 }
